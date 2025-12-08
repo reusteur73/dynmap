@@ -19,6 +19,8 @@ repositories {
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
 dependencies {
+    compileOnly 'org.checkerframework:checker-qual:3.42.0'
+    compileOnly 'com.google.guava:guava:31.1-jre'
     implementation('org.bukkit:bukkit:1.10.2-R0.1-SNAPSHOT') { transitive = false }
     compileOnly('com.nijikokun.bukkit:Permissions:3.1.6')  { transitive = false }
     compileOnly('me.lucko.luckperms:luckperms-api:4.3')  { transitive = false }
@@ -103,6 +105,9 @@ dependencies {
     implementation(project(':bukkit-helper-121-6')) {
         transitive = false
     }
+    implementation(project(':bukkit-helper-121-10')) {
+        transitive = false
+    }
 }
 
 processResources {
@@ -148,6 +153,7 @@ shadowJar {
         include(dependency(':bukkit-helper-121-4'))
         include(dependency(':bukkit-helper-121-5'))
         include(dependency(':bukkit-helper-121-6'))
+        include(dependency(':bukkit-helper-121-10'))
     }
     relocate('org.bstats', 'org.dynmap.bstats')
     destinationDirectory = file '../target'
